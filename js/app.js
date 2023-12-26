@@ -51,14 +51,12 @@ const addToCart = (id, value) => {
 };
 
 const showProductDetails = (product_id) => {
-  console.log(product_id);
   fetch(`https://fakestoreapi.com/products/${product_id}`)
     .then((res) => res.json())
     .then((data) => showProductDetailsInModal(data));
 };
 
 const showProductDetailsInModal = (product_details) => {
-  console.log(product_details);
   setInnerText("exampleModalLabel", product_details.title);
   setInnerText("product_Id", product_details.id);
   setInnerText("modal_body", product_details.description);
@@ -110,7 +108,6 @@ const updateTotal = () => {
     getInputValue("price") +
     getInputValue("delivery-charge") +
     getInputValue("total-tax");
-  console.log(grandTotal);
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 
   // setInnerText("total", grandTotal);
@@ -125,10 +122,8 @@ const updateTotal = () => {
 // search by category
 document.getElementById("search-btn").addEventListener("click", function () {
   const inputField = document.getElementById("input-value").value;
-  console.log(inputField);
   const searchedProduct = arr[0].filter((p) =>
     p.title.toLowerCase().includes(`${inputField}`)
   );
-  console.log(searchedProduct);
   showProducts(searchedProduct);
 });
